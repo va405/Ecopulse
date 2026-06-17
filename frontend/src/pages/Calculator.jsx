@@ -5,6 +5,16 @@ import AnimatedStats from '../components/AnimatedStats'
 import ParticleBackground from '../components/ParticleBackground'
 import CSS3DCard from '../components/CSS3DCard'
 
+/**
+ * Calculator Component
+ * 
+ * Provides an interactive carbon footprint calculator that allows users to input
+ * their daily activities and calculates their environmental impact across multiple
+ * categories: transportation, energy, water, diet, and waste.
+ * 
+ * @component
+ * @returns {JSX.Element} Carbon footprint calculator interface
+ */
 const Calculator = () => {
   const [formData, setFormData] = useState({
     // Transportation
@@ -33,8 +43,6 @@ const Calculator = () => {
     try {
       // Use environment variable for API URL, fallback to production URL
       const API_URL = import.meta.env.VITE_API_URL || 'https://carbon-api-aihm.onrender.com'
-      
-      console.log('Connecting to API:', API_URL) // Debug log
       
       const response = await fetch(`${API_URL}/api/calculate-impact`, {
         method: 'POST',

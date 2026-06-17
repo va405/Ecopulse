@@ -182,7 +182,7 @@ export const initAnalytics = () => {
   if (typeof window !== 'undefined') {
     window.addEventListener('load', () => {
       const perfMetrics = performanceMonitor.trackPageLoad();
-      console.log('Performance Metrics:', perfMetrics);
+      // Performance metrics tracked for monitoring
     });
   }
 

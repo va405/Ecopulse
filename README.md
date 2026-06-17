@@ -5,8 +5,9 @@
 
 <br/>
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-brightgreen?style=for-the-badge&logo=vercel)](https://carbon-platform.vercel.app)
-[![GitHub](https://img.shields.io/badge/GitHub-black?style=for-the-badge&logo=github)](https://github.com/yourusername/carbon-ai)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-brightgreen?style=for-the-badge&logo=vercel)](https://hack2skill-zwoy.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-black?style=for-the-badge&logo=github)](https://github.com/technest078-cmyk/hack2skill)
+[![API](https://img.shields.io/badge/API-Live-blue?style=for-the-badge)](https://carbon-api-aihm.onrender.com)
 
 <br/>
 
@@ -16,7 +17,8 @@
 
 <br/>
 
-**🔗 Live Demo:** https://carbon-platform.vercel.app
+**🔗 Live Demo:** https://hack2skill-zwoy.vercel.app
+**🔌 API Endpoint:** https://carbon-api-aihm.onrender.com
 
 </div>
 
@@ -43,6 +45,15 @@ Design a solution that helps people:
 - Track impact over time  
 - Reduce emissions through simple actions
 - Receive personalized recommendations
+
+### Solution
+Carbon AI provides:
+- **Real-time calculations** across 5 categories (transport, energy, water, diet, waste)
+- **AI-powered recommendations** tailored to user behavior
+- **Predictive analytics** to forecast future impact
+- **Visual insights** through interactive 3D charts
+- **Gamification** to encourage sustainable habits
+- **Community benchmarking** for motivation
 
 ---
 
