@@ -7,40 +7,40 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#2563EB',      // Blue - Primary brand
-        secondary: '#7C3AED',    // Purple - Secondary
-        accent: '#F97316',       // Orange - Accent
-        danger: '#EF4444',       // Red for high emissions
-        success: '#10B981',      // Green for good results
-        warning: '#F59E0B',      // Amber
-        bgDark: '#020617',       // Deep dark blue-black
-        bgDarker: '#010409',     // Even darker
-        cardDark: '#111827',     // Card background
-        cardLight: '#1F2937',    // Lighter card
-        textLight: '#F8FAFC',
-        textMuted: '#94A3B8',
+        primary: '#00D9FF',      // Cyan - Primary brand
+        secondary: '#FF00FF',    // Magenta - Secondary
+        accent: '#FFD700',       // Gold - Accent
+        danger: '#FF3366',       // Pink-Red for high emissions
+        success: '#00FF88',      // Neon Green for good results
+        warning: '#FFAA00',      // Orange-Amber
+        bgDark: '#0A0118',       // Deep purple-black
+        bgDarker: '#050010',     // Ultra dark purple
+        cardDark: '#1A0B2E',     // Purple card background
+        cardLight: '#2D1B4E',    // Lighter purple card
+        textLight: '#FFFFFF',
+        textMuted: '#B794F6',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Space Grotesk', 'Inter', 'sans-serif'],
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #2563EB 0%, #1E40AF 100%)',
-        'gradient-secondary': 'linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%)',
-        'gradient-accent': 'linear-gradient(135deg, #F97316 0%, #EA580C 100%)',
-        'gradient-analytics': 'linear-gradient(135deg, #2563EB 0%, #7C3AED 50%, #F97316 100%)',
-        'gradient-carbon': 'linear-gradient(135deg, #1E40AF 0%, #7C3AED 100%)',
-        'gradient-dark': 'linear-gradient(180deg, #020617 0%, #010409 100%)',
-        'gradient-mesh': 'radial-gradient(at 40% 20%, #2563EB 0%, transparent 50%), radial-gradient(at 80% 80%, #7C3AED 0%, transparent 50%), radial-gradient(at 0% 50%, #F97316 0%, transparent 50%)',
+        'gradient-primary': 'linear-gradient(135deg, #00D9FF 0%, #0099CC 100%)',
+        'gradient-secondary': 'linear-gradient(135deg, #FF00FF 0%, #CC00CC 100%)',
+        'gradient-accent': 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
+        'gradient-analytics': 'linear-gradient(135deg, #00D9FF 0%, #FF00FF 50%, #FFD700 100%)',
+        'gradient-carbon': 'linear-gradient(135deg, #0099CC 0%, #FF00FF 100%)',
+        'gradient-dark': 'linear-gradient(180deg, #0A0118 0%, #050010 100%)',
+        'gradient-mesh': 'radial-gradient(at 40% 20%, #00D9FF 0%, transparent 50%), radial-gradient(at 80% 80%, #FF00FF 0%, transparent 50%), radial-gradient(at 0% 50%, #FFD700 0%, transparent 50%)',
       },
       boxShadow: {
-        'glow-blue': '0 0 30px rgba(37, 99, 235, 0.5), 0 0 60px rgba(37, 99, 235, 0.3)',
-        'glow-purple': '0 0 30px rgba(124, 58, 237, 0.5), 0 0 60px rgba(124, 58, 237, 0.3)',
-        'glow-orange': '0 0 30px rgba(249, 115, 22, 0.5), 0 0 60px rgba(249, 115, 22, 0.3)',
-        'glow-analytics': '0 0 40px rgba(37, 99, 235, 0.3), 0 0 80px rgba(124, 58, 237, 0.2), 0 0 120px rgba(249, 115, 22, 0.1)',
-        'glow-multi': '0 0 20px rgba(37, 99, 235, 0.4), 0 0 40px rgba(124, 58, 237, 0.3), 0 0 60px rgba(249, 115, 22, 0.2)',
-        'inner-glow': 'inset 0 0 20px rgba(37, 99, 235, 0.2)',
-        'neon': '0 0 5px rgba(37, 99, 235, 0.5), 0 0 10px rgba(37, 99, 235, 0.4), 0 0 20px rgba(37, 99, 235, 0.3), 0 0 40px rgba(124, 58, 237, 0.2)',
+        'glow-blue': '0 0 30px rgba(0, 217, 255, 0.5), 0 0 60px rgba(0, 217, 255, 0.3)',
+        'glow-purple': '0 0 30px rgba(255, 0, 255, 0.5), 0 0 60px rgba(255, 0, 255, 0.3)',
+        'glow-orange': '0 0 30px rgba(255, 215, 0, 0.5), 0 0 60px rgba(255, 215, 0, 0.3)',
+        'glow-analytics': '0 0 40px rgba(0, 217, 255, 0.3), 0 0 80px rgba(255, 0, 255, 0.2), 0 0 120px rgba(255, 215, 0, 0.1)',
+        'glow-multi': '0 0 20px rgba(0, 217, 255, 0.4), 0 0 40px rgba(255, 0, 255, 0.3), 0 0 60px rgba(255, 215, 0, 0.2)',
+        'inner-glow': 'inset 0 0 20px rgba(0, 217, 255, 0.2)',
+        'neon': '0 0 5px rgba(0, 217, 255, 0.5), 0 0 10px rgba(0, 217, 255, 0.4), 0 0 20px rgba(0, 217, 255, 0.3), 0 0 40px rgba(255, 0, 255, 0.2)',
       },
       animation: {
         'float': 'float 8s ease-in-out infinite',
