@@ -32,7 +32,7 @@ const Calculator = () => {
   const calculateImpact = async () => {
     try {
       // Use environment variable for API URL, fallback to production URL
-      const API_URL = import.meta.env.VITE_API_URL || 'https://greenpulse-api-wv14.onrender.com'
+      const API_URL = import.meta.env.VITE_API_URL || 'https://carbon-api-aihm.onrender.com'
       
       console.log('Connecting to API:', API_URL) // Debug log
       
