@@ -1,7 +1,44 @@
-// Advanced data export utilities
+/**
+ * Advanced Data Export Utilities
+ * 
+ * Provides comprehensive export functionality for user carbon footprint data
+ * Supports multiple formats: CSV, JSON, and PDF with rich formatting
+ * 
+ * @module exportData
+ * @author EcoPulse Team
+ * @version 1.0.0
+ */
 
 /**
- * Export data to CSV format
+ * Export data to CSV (Comma-Separated Values) format
+ * 
+ * Converts an array of objects into CSV format and triggers browser download.
+ * Automatically handles commas in values by wrapping in quotes.
+ * 
+ * @function
+ * @param {Array<Object>} data - Array of objects to export (must have consistent keys)
+ * @param {string} [filename='ecopulse-data.csv'] - Name for the downloaded file
+ * @returns {void}
+ * 
+ * @throws {Error} Logs error if data is empty or undefined
+ * 
+ * @example
+ * const carbonData = [
+ *   { date: '2024-01', transport: 150, energy: 200 },
+ *   { date: '2024-02', transport: 140, energy: 180 }
+ * ];
+ * exportToCSV(carbonData, 'my-carbon-data.csv');
+ * 
+ * @example
+ * // Handles commas in values
+ * const data = [{ name: 'Smith, John', value: 100 }];
+ * exportToCSV(data); // Output: "name","value"\n"Smith, John",100
+ * 
+ * @see {@link exportToJSON} for JSON export
+ * @see {@link exportToPDF} for PDF export
+ * 
+ * Time Complexity: O(n*m) where n = rows, m = columns
+ * Space Complexity: O(n*m) for CSV string storage
  */
 export const exportToCSV = (data, filename = 'ecopulse-data.csv') => {
   if (!data || data.length === 0) {
@@ -34,7 +71,36 @@ export const exportToCSV = (data, filename = 'ecopulse-data.csv') => {
 };
 
 /**
- * Export data to JSON format
+ * Export data to JSON (JavaScript Object Notation) format
+ * 
+ * Converts data to formatted JSON string and triggers browser download.
+ * Uses pretty-printing with 2-space indentation for readability.
+ * 
+ * @function
+ * @param {Array<Object>|Object} data - Data to export (array or single object)
+ * @param {string} [filename='ecopulse-data.json'] - Name for the downloaded file
+ * @returns {void}
+ * 
+ * @example
+ * const userData = {
+ *   user: 'john@example.com',
+ *   totalEmissions: 350.5,
+ *   history: [100, 120, 130.5]
+ * };
+ * exportToJSON(userData, 'user-carbon-footprint.json');
+ * 
+ * @example
+ * // Export array of monthly data
+ * const monthlyData = [
+ *   { month: 'Jan', emissions: 150 },
+ *   { month: 'Feb', emissions: 140 }
+ * ];
+ * exportToJSON(monthlyData);
+ * 
+ * @see {@link exportToCSV} for CSV export
+ * 
+ * Time Complexity: O(n) where n = data size
+ * Space Complexity: O(n) for JSON string
  */
 export const exportToJSON = (data, filename = 'ecopulse-data.json') => {
   const json = JSON.stringify(data, null, 2);
