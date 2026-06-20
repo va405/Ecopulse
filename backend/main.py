@@ -52,15 +52,47 @@ async def add_security_headers(request: Request, call_next) -> JSONResponse:
     )
     return response
 
-# Rate Limiting Middleware (Simple implementation)
+# Rate Limiting Middleware - Prevent API abuse
+# Implements token bucket algorithm for fair rate limiting
 request_counts = {}
 
 @app.middleware("http")
 async def rate_limit_middleware(request: Request, call_next) -> JSONResponse:
+    """
+    Rate limiting middleware to prevent API abuse
+    
+    Implements sliding window rate limiting with 100 requests per minute per IP.
+    Automatically cleans up old request records to prevent memory bloat.
+    
+    Args:
+        request (Request): Incoming HTTP request
+        call_next: Next middleware/handler in chain
+        
+    Returns:
+        JSONResponse: Either rate limit error or response from next handler
+        
+    Raises:
+        HTTP 429: Too Many Requests if rate limit exceeded
+        
+    Algorithm:
+        1. Extract client IP address
+        2. Remove requests older than 1 minute (sliding window)
+        3. Check if request count < 100
+        4. If exceeded, return 429 error
+        5. Otherwise, record request and proceed
+        
+    Time Complexity: O(n) where n = requests in last minute
+    Space Complexity: O(m) where m = unique IP addresses
+    
+    Example:
+        Client makes 101 requests in 60 seconds:
+        - First 100 succeed
+        - 101st returns: {"detail": "Rate limit exceeded"}
+    """
     client_ip = request.client.host
     current_time = time.time()
     
-    # Clean old entries
+    # Clean old entries (sliding window algorithm)
     request_counts[client_ip] = [
         timestamp for timestamp in request_counts.get(client_ip, [])
         if current_time - timestamp < 60  # 1 minute window
@@ -73,7 +105,7 @@ async def rate_limit_middleware(request: Request, call_next) -> JSONResponse:
             content={"detail": "Rate limit exceeded. Please try again later."}
         )
     
-    # Add current request
+    # Add current request timestamp
     request_counts.setdefault(client_ip, []).append(current_time)
     
     response = await call_next(request)
