@@ -81,7 +81,7 @@ const Analytics = () => {
               Platform <span className="text-primary drop-shadow-[0_0_20px_rgba(37,99,235,0.8)]">Analytics</span>
             </h1>
           </div>
-          <p className="text-textLight text-lg">Real-time insights across the Carbon AI community</p>
+          <p className="text-textLight text-lg">Real-time insights across the EcoPulse community</p>
         </motion.div>
 
         {/* Live Stats Grid */}

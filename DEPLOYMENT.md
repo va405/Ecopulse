@@ -1,143 +1,131 @@
 # Deployment Guide
 
-## Frontend Deployment (Vercel)
+This guide provides instructions for deploying EcoPulse to various cloud platforms.
 
-### Prerequisites
-- Vercel account
-- GitHub repository
+## Prerequisites
 
-### Steps
+- Git repository
+- Node.js 18+ (for frontend)
+- Python 3.11+ (for backend)
+- Cloud platform account (your choice)
 
-1. **Push to GitHub**
+## Frontend Deployment
+
+### Option 1: Vercel
+1. Push code to GitHub
+2. Import project on Vercel
+3. Set root directory to `frontend`
+4. Add environment variable: `VITE_API_URL=<your-backend-url>`
+5. Deploy
+
+### Option 2: Netlify
+1. Push code to GitHub
+2. Import project on Netlify
+3. Set base directory to `frontend`
+4. Build command: `npm run build`
+5. Publish directory: `dist`
+6. Add environment variable: `VITE_API_URL=<your-backend-url>`
+
+### Option 3: Static Hosting (AWS S3, Azure, etc.)
 ```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/yourusername/greenpulse-ai.git
-git push -u origin main
+cd frontend
+npm install
+npm run build
+# Upload dist/ folder to your hosting
 ```
 
-2. **Deploy to Vercel**
-   - Go to [vercel.com](https://vercel.com)
-   - Click "New Project"
-   - Import your GitHub repository
-   - Vercel will auto-detect Vite
-   - Set root directory to `frontend`
-   - Click "Deploy"
+## Backend Deployment
 
-3. **Environment Variables** (in Vercel dashboard)
+### Option 1: Cloud Platform (Render, Railway, Fly.io)
+1. Push code to GitHub
+2. Create new web service
+3. Set root directory to `backend`
+4. Build command: `pip install -r requirements.txt`
+5. Start command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+
+### Option 2: Docker Deployment
+```bash
+cd backend
+docker build -t ecopulse-api .
+docker run -p 8000:8000 ecopulse-api
 ```
-VITE_API_URL=https://your-backend.onrender.com
-VITE_FIREBASE_API_KEY=your_firebase_key
+
+### Option 3: VPS (DigitalOcean, Linode, etc.)
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run with gunicorn (production)
+gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
 ```
 
-## Backend Deployment (Render)
+## Environment Variables
 
-### Prerequisites
-- Render account
-- GitHub repository
-
-### Steps
-
-1. **Push Backend to GitHub** (already done above)
-
-2. **Create Web Service on Render**
-   - Go to [render.com](https://render.com)
-   - Click "New +" → "Web Service"
-   - Connect your GitHub repository
-   - Configure:
-     - Name: `greenpulse-api`
-     - Environment: `Python 3`
-     - Region: Choose closest to users
-     - Branch: `main`
-     - Root Directory: `backend`
-     - Build Command: `pip install -r requirements.txt`
-     - Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
-
-3. **Add Environment Variables**
+### Frontend (.env)
+```bash
+VITE_API_URL=<your-backend-url>
+VITE_FIREBASE_API_KEY=<optional>
+VITE_FIREBASE_AUTH_DOMAIN=<optional>
+VITE_FIREBASE_PROJECT_ID=<optional>
 ```
-DATABASE_URL=postgresql://...
-GEMINI_API_KEY=your_api_key
+
+### Backend
+```bash
+DATABASE_URL=<optional-database-url>
+GEMINI_API_KEY=<optional-ai-key>
 DEBUG=False
 ```
 
-## Database (Neon PostgreSQL)
+## CORS Configuration
 
-### Steps
+After deployment, update `backend/main.py` with your frontend URL:
 
-1. **Create Neon Account**
-   - Go to [neon.tech](https://neon.tech)
-   - Create new project
-   - Copy connection string
-
-2. **Add to Render**
-   - Go to your Render service
-   - Add `DATABASE_URL` environment variable
-   - Paste Neon connection string
-
-## Firebase Authentication Setup
-
-1. **Create Firebase Project**
-   - Go to [console.firebase.google.com](https://console.firebase.google.com)
-   - Create new project
-   - Enable Authentication → Email/Password
-
-2. **Get Credentials**
-   - Project Settings → General
-   - Copy Web API Key
-   - Add to Vercel environment variables
-
-3. **Update Frontend Config**
-   Create `frontend/src/firebase.js`:
-```javascript
-import { initializeApp } from 'firebase/app'
-import { getAuth } from 'firebase/auth'
-
-const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project-id"
-}
-
-const app = initializeApp(firebaseConfig)
-export const auth = getAuth(app)
+```python
+allow_origins=[
+    "http://localhost:3000",
+    "http://localhost:5173",
+    "https://your-frontend-url.com",  # Add your actual URL
+]
 ```
 
 ## Post-Deployment Checklist
 
-- [ ] Frontend deployed on Vercel
-- [ ] Backend deployed on Render
-- [ ] Database connected (Neon)
-- [ ] Firebase authentication configured
-- [ ] Environment variables set
-- [ ] CORS configured correctly
+- [ ] Frontend deployed and accessible
+- [ ] Backend deployed and accessible
+- [ ] Environment variables configured
+- [ ] CORS configured with frontend URL
 - [ ] API endpoints tested
 - [ ] SSL/HTTPS enabled
-- [ ] Custom domain configured (optional)
+- [ ] Health check endpoint responding
 
-## Monitoring & Maintenance
+## Testing Deployment
 
-- Use Vercel Analytics for frontend metrics
-- Use Render metrics for backend monitoring
-- Set up Neon database backups
-- Monitor API usage and costs
-- Update dependencies regularly
+### Test Backend
+```bash
+curl https://your-backend-url.com/health
+```
+
+### Test Frontend
+Visit your frontend URL and try:
+- Home page loads
+- Calculator works
+- API connection successful
 
 ## Troubleshooting
 
 ### CORS Errors
-Update backend `main.py`:
-```python
-allow_origins=["https://your-vercel-app.vercel.app"]
-```
+- Verify frontend URL is added to `allow_origins` in backend
+- Check protocol (http vs https)
+- Ensure no trailing slashes
 
 ### Build Failures
-- Check Node.js version (18+)
-- Check Python version (3.9+)
-- Verify all dependencies in package.json/requirements.txt
+- Verify Node.js version (18+)
+- Verify Python version (3.11+)
+- Check all dependencies are listed
+- Review build logs for specific errors
 
-### Database Connection Issues
-- Verify DATABASE_URL format
-- Check Neon project status
-- Ensure IP allowlist includes Render IPs
+### API Connection Issues
+- Verify `VITE_API_URL` is set correctly
+- Test API endpoint directly
+- Check network/firewall rules
+- Verify SSL certificate if using HTTPS

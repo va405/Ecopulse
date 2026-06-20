@@ -1,6 +1,6 @@
-# Carbon AI Backend
+# EcoPulse Backend
 
-FastAPI backend for the Carbon AI sustainability tracking platform.
+FastAPI backend for the EcoPulse sustainability tracking platform.
 
 ## Features
 

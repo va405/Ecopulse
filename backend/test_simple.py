@@ -1,5 +1,5 @@
 """
-Simple test suite for Carbon AI Backend
+Simple test suite for EcoPulse Backend
 Tests core functionality without external dependencies
 """
 

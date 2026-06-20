@@ -50,7 +50,7 @@ npm audit fix
 ```python
 # Whitelist specific origins
 origins = [
-    "https://greenpulse-platform.vercel.app",
+    "https://your-frontend-url.com",
     "http://localhost:3000"
 ]
 ```
@@ -104,7 +104,7 @@ safety check
 ✅ Dependency scanning
 
 ### Infrastructure Security
-✅ Secure hosting (Vercel, Render)
+✅ Secure hosting platforms
 ✅ DDoS protection
 ✅ Firewall rules
 ✅ Automated backups

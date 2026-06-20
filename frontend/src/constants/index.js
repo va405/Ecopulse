@@ -5,7 +5,7 @@
 
 // API Configuration
 export const API_CONFIG = {
-  BASE_URL: import.meta.env.VITE_API_URL || 'https://carbon-api-aihm.onrender.com',
+  BASE_URL: import.meta.env.VITE_API_URL || 'http://localhost:8000',
   TIMEOUT: 30000, // 30 seconds
   RETRY_ATTEMPTS: 3,
   RETRY_DELAY: 1000, // 1 second
@@ -254,17 +254,17 @@ export const FEATURES = {
 
 // Contact Information
 export const CONTACT = {
-  EMAIL: 'support@carbon.ai',
-  TWITTER: '@carbonai',
-  GITHUB: 'https://github.com/yourusername/carbon-ai',
+  EMAIL: 'support@ecopulse.ai',
+  TWITTER: '@ecopulse',
+  GITHUB: '',
 }
 
 // App Metadata
 export const APP_INFO = {
-  NAME: 'Carbon AI',
+  NAME: 'EcoPulse',
   VERSION: '1.0.0',
-  DESCRIPTION: 'Carbon Footprint Intelligence Platform',
-  COPYRIGHT: '© 2026 Carbon AI',
+  DESCRIPTION: 'EcoPulse - Carbon Intelligence Platform',
+  COPYRIGHT: '© 2026 EcoPulse',
 }
 
 export default {

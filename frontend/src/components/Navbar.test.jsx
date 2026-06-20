@@ -23,8 +23,8 @@ const renderWithRouter = (component, authValue) => {
 describe('Navbar Component', () => {
   it('renders logo and brand name', () => {
     renderWithRouter(<Navbar />, mockAuthContext())
-    expect(screen.getByText('Carbon AI')).toBeInTheDocument()
-    expect(screen.getByText('CARBON ANALYTICS')).toBeInTheDocument()
+    expect(screen.getByText('EcoPulse')).toBeInTheDocument()
+    expect(screen.getByText('ECO ANALYTICS')).toBeInTheDocument()
   })
 
   it('displays all navigation items', () => {

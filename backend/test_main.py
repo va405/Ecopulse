@@ -13,7 +13,7 @@ class TestHealthEndpoints:
         assert response.status_code == 200
         data = response.json()
         assert "message" in data
-        assert "Carbon AI" in data["message"]
+        assert "EcoPulse" in data["message"]
     
     def test_health_check(self):
         """Test health check endpoint"""
@@ -36,59 +36,35 @@ class TestCarbonCalculation:
     def test_calculate_impact_valid_data(self):
         """Test carbon calculation with valid data"""
         payload = {
-            "transportation": {
-                "car_km": 100,
-                "public_transport_km": 50,
-                "flights_short": 2,
-                "flights_long": 1
-            },
-            "energy": {
-                "electricity_kwh": 300,
-                "natural_gas_kwh": 150,
-                "heating_oil_liters": 0
-            },
-            "food": {
-                "meat_servings": 10,
-                "dairy_servings": 14,
-                "local_food_percentage": 30
-            },
-            "waste": {
-                "general_waste_kg": 20,
-                "recycling_percentage": 50
-            },
-            "lifestyle": {
-                "new_clothes": 5,
-                "electronics": 1,
-                "water_usage_liters": 150
-            }
+            "carMiles": 100,
+            "publicTransport": 50,
+            "flights": 2,
+            "electricity": 300,
+            "heating": 150,
+            "showerMinutes": 10,
+            "laundry": 4,
+            "diet": "mixed",
+            "recycling": "sometimes"
         }
         response = client.post("/api/calculate-impact", json=payload)
         assert response.status_code == 200
         data = response.json()
-        assert "total_carbon" in data
-        assert "breakdown" in data
-        assert data["total_carbon"] > 0
+        assert "carbon" in data
+        assert "water" in data
+        assert data["carbon"] > 0
     
     def test_calculate_impact_empty_data(self):
         """Test carbon calculation with empty data"""
-        payload = {
-            "transportation": {},
-            "energy": {},
-            "food": {},
-            "waste": {},
-            "lifestyle": {}
-        }
+        payload = {}
         response = client.post("/api/calculate-impact", json=payload)
         assert response.status_code == 200
         data = response.json()
-        assert data["total_carbon"] >= 0
+        assert data["carbon"] >= 0
     
     def test_calculate_impact_missing_fields(self):
         """Test carbon calculation with missing fields"""
         payload = {
-            "transportation": {
-                "car_km": 50
-            }
+            "carMiles": 50
         }
         response = client.post("/api/calculate-impact", json=payload)
         # Should handle missing fields gracefully
@@ -101,26 +77,18 @@ class TestAIAdvisor:
     def test_ai_advisor_basic(self):
         """Test basic AI advisor query"""
         payload = {
-            "query": "How can I reduce my carbon footprint?",
-            "carbon_data": {
-                "total": 250,
-                "transportation": 100,
-                "energy": 80,
-                "food": 50,
-                "waste": 20
-            }
+            "message": "How can I reduce my carbon footprint?"
         }
         response = client.post("/api/ai-advisor", json=payload)
         assert response.status_code == 200
         data = response.json()
-        assert "response" in data
-        assert len(data["response"]) > 0
+        assert "message" in data
+        assert len(data["message"]) > 0
     
     def test_ai_advisor_empty_query(self):
         """Test AI advisor with empty query"""
         payload = {
-            "query": "",
-            "carbon_data": {"total": 250}
+            "message": ""
         }
         response = client.post("/api/ai-advisor", json=payload)
         assert response.status_code in [200, 422]
@@ -128,14 +96,12 @@ class TestAIAdvisor:
     def test_ai_advisor_advanced(self):
         """Test advanced AI advisor"""
         payload = {
-            "query": "transportation tips",
-            "carbon_data": {"transportation": 150},
-            "user_profile": {"lifestyle": "urban"}
+            "message": "transportation tips"
         }
         response = client.post("/api/ai-advisor-advanced", json=payload)
         assert response.status_code == 200
         data = response.json()
-        assert "response" in data
+        assert "message" in data
 
 
 class TestPredictions:
@@ -144,29 +110,28 @@ class TestPredictions:
     def test_predict_impact(self):
         """Test carbon prediction"""
         payload = {
-            "historical_data": [
+            "historicalData": [
                 {"month": "Jan", "carbon": 300},
                 {"month": "Feb", "carbon": 280},
                 {"month": "Mar", "carbon": 260},
                 {"month": "Apr", "carbon": 250}
             ],
-            "months_ahead": 6
+            "targetMonths": 6
         }
         response = client.post("/api/predict-impact", json=payload)
         assert response.status_code == 200
         data = response.json()
         assert "predictions" in data
-        assert "confidence" in data
+        assert "insights" in data
         assert len(data["predictions"]) == 6
-        assert data["confidence"] > 0
     
     def test_predict_impact_insufficient_data(self):
         """Test prediction with insufficient data"""
         payload = {
-            "historical_data": [
+            "historicalData": [
                 {"month": "Jan", "carbon": 300}
             ],
-            "months_ahead": 6
+            "targetMonths": 6
         }
         response = client.post("/api/predict-impact", json=payload)
         # Should handle gracefully
@@ -179,26 +144,27 @@ class TestBenchmarking:
     def test_benchmark_comparison(self):
         """Test benchmark comparison"""
         payload = {
-            "user_carbon": 250,
-            "category": "overall"
+            "carbon": 250,
+            "water": 3000,
+            "score": 75
         }
         response = client.post("/api/benchmark", json=payload)
         assert response.status_code == 200
         data = response.json()
-        assert "comparison" in data
-        assert "percentile" in data
-        assert "recommendations" in data
+        assert "comparisons" in data
+        assert "ranking" in data
     
     def test_benchmark_below_average(self):
         """Test benchmark for below average user"""
         payload = {
-            "user_carbon": 150,
-            "category": "overall"
+            "carbon": 150,
+            "water": 2000,
+            "score": 85
         }
         response = client.post("/api/benchmark", json=payload)
         assert response.status_code == 200
         data = response.json()
-        assert data["comparison"]["global_average"] > 150
+        assert data["comparisons"]["global"]["carbonDifference"] < 0
 
 
 class TestChallenges:
@@ -209,17 +175,17 @@ class TestChallenges:
         response = client.get("/api/challenges")
         assert response.status_code == 200
         data = response.json()
-        assert "challenges" in data
-        assert len(data["challenges"]) > 0
+        assert "active" in data
+        assert len(data["active"]) > 0
     
     def test_challenges_structure(self):
         """Test challenges have correct structure"""
         response = client.get("/api/challenges")
         data = response.json()
-        challenge = data["challenges"][0]
+        challenge = data["active"][0]
         assert "id" in challenge
         assert "title" in challenge
-        assert "difficulty" in challenge
+        assert "description" in challenge
         assert "points" in challenge
 
 
@@ -231,16 +197,16 @@ class TestAnalytics:
         response = client.get("/api/analytics")
         assert response.status_code == 200
         data = response.json()
-        assert "total_users" in data
-        assert "total_carbon_saved" in data
-        assert "active_challenges" in data
+        assert "platformStats" in data
+        assert "topPerformers" in data
+        assert "trending" in data
     
     def test_analytics_values(self):
         """Test analytics return positive values"""
         response = client.get("/api/analytics")
         data = response.json()
-        assert data["total_users"] > 0
-        assert data["total_carbon_saved"] > 0
+        assert data["platformStats"]["totalUsers"] > 0
+        assert data["platformStats"]["totalCarbonSaved"] > 0
 
 
 class TestDashboard:
@@ -251,16 +217,17 @@ class TestDashboard:
         response = client.get("/api/dashboard/test_user_123")
         assert response.status_code == 200
         data = response.json()
-        assert "user_id" in data
-        assert "stats" in data
+        assert "monthlyData" in data
+        assert "currentStats" in data
+        assert "badges" in data
     
     def test_dashboard_stats_structure(self):
         """Test dashboard stats structure"""
         response = client.get("/api/dashboard/test_user_123")
         data = response.json()
-        stats = data["stats"]
-        assert "total_carbon" in stats
-        assert "monthly_trend" in stats
+        stats = data["currentStats"]
+        assert "carbon" in stats
+        assert len(data["monthlyData"]) > 0
 
 
 # Performance Tests
@@ -280,11 +247,15 @@ class TestPerformance:
         """Test calculation endpoint response time"""
         import time
         payload = {
-            "transportation": {"car_km": 100},
-            "energy": {"electricity_kwh": 300},
-            "food": {"meat_servings": 10},
-            "waste": {"general_waste_kg": 20},
-            "lifestyle": {"water_usage_liters": 150}
+            "carMiles": 100,
+            "publicTransport": 50,
+            "flights": 2,
+            "electricity": 300,
+            "heating": 150,
+            "showerMinutes": 10,
+            "laundry": 4,
+            "diet": "mixed",
+            "recycling": "sometimes"
         }
         start = time.time()
         response = client.post("/api/calculate-impact", json=payload)

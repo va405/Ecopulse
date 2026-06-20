@@ -308,7 +308,7 @@ Advanced backend capabilities:
 | **Security** | 5/5 | ✅ CORS, input validation, HTTPS, env variables |
 | **Documentation** | 5/5 | ✅ Comprehensive README, API docs, setup guides |
 | **Innovation** | 5/5 | ✅ ML predictions, real-time notifications, PWA |
-| **Deployment** | 0/0 | ✅ Live on Vercel + Render |
+| **Deployment** | 0/0 | ✅ Ready for cloud deployment |
 
 **TOTAL: 100/100** ✅
 
@@ -391,9 +391,10 @@ uvicorn main:app --reload
 
 ## 🌐 Live Deployment
 
-- **Frontend:** https://greenpulse-platform.vercel.app
-- **Backend API:** https://greenpulse-api-wv14.onrender.com
-- **GitHub:** https://github.com/Poojareddy327/greenpulse-ai
+Deploy to your preferred platform:
+- **Frontend:** Static hosting (Vercel, Netlify, etc.)
+- **Backend API:** Cloud platform (Render, Railway, Fly.io, etc.)
+- **Repository:** Your GitHub/GitLab repository
 
 ---
 

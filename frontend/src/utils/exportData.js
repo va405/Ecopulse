@@ -3,7 +3,7 @@
 /**
  * Export data to CSV format
  */
-export const exportToCSV = (data, filename = 'carbon-data.csv') => {
+export const exportToCSV = (data, filename = 'ecopulse-data.csv') => {
   if (!data || data.length === 0) {
     console.error('No data to export');
     return;
@@ -36,7 +36,7 @@ export const exportToCSV = (data, filename = 'carbon-data.csv') => {
 /**
  * Export data to JSON format
  */
-export const exportToJSON = (data, filename = 'carbon-data.json') => {
+export const exportToJSON = (data, filename = 'ecopulse-data.json') => {
   const json = JSON.stringify(data, null, 2);
   const blob = new Blob([json], { type: 'application/json' });
   const link = document.createElement('a');
@@ -54,7 +54,7 @@ export const exportToJSON = (data, filename = 'carbon-data.json') => {
 /**
  * Generate PDF report (requires browser print)
  */
-export const exportToPDF = (elementId, filename = 'carbon-report.pdf') => {
+export const exportToPDF = (elementId, filename = 'ecopulse-report.pdf') => {
   const element = document.getElementById(elementId);
   if (!element) {
     console.error('Element not found');
@@ -116,14 +116,14 @@ export const exportToPDF = (elementId, filename = 'carbon-report.pdf') => {
       </head>
       <body>
         <div class="header">
-          <h1>🌍 Carbon AI</h1>
+          <h1>🌍 EcoPulse</h1>
           <p>Carbon Footprint Intelligence Report</p>
           <p>Generated: ${new Date().toLocaleDateString()}</p>
         </div>
         ${element.innerHTML}
         <div class="footer">
-          <p>Carbon AI - Empowering sustainable living through data-driven insights</p>
-          <p>https://hack2skill-zwoy.vercel.app</p>
+          <p>EcoPulse - Empowering sustainable living through data-driven insights</p>
+          <p>Carbon Intelligence Platform</p>
         </div>
       </body>
     </html>
@@ -178,7 +178,7 @@ export const formatDataForExport = (monthlyData, currentStats, badges) => {
     monthlyTrends: monthlyData,
     achievements: badges.filter(b => b.unlocked).map(b => b.name),
     metadata: {
-      platform: 'Carbon AI',
+      platform: 'EcoPulse',
       version: '1.0.0',
       exportFormat: 'JSON'
     }

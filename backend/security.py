@@ -1,5 +1,5 @@
 """
-Advanced Security Module for Carbon AI
+Advanced Security Module for EcoPulse
 Implements comprehensive security measures
 """
 
@@ -136,7 +136,7 @@ class TokenManager:
     @staticmethod
     def generate_api_key() -> str:
         """Generate API key with prefix"""
-        prefix = "ca_"  # Carbon AI
+        prefix = "ep_"  # EcoPulse
         token = secrets.token_urlsafe(32)
         return f"{prefix}{token}"
     
@@ -215,7 +215,7 @@ class ContentSecurityPolicy:
             "style-src": ["'self'", "'unsafe-inline'"],
             "img-src": ["'self'", "data:", "https:"],
             "font-src": ["'self'", "data:"],
-            "connect-src": ["'self'", "https://carbon-api.onrender.com"],
+            "connect-src": ["'self'"],
             "frame-ancestors": ["'none'"],
             "base-uri": ["'self'"],
             "form-action": ["'self'"],

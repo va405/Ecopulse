@@ -21,7 +21,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://postgres:postgres@db:5432/carbon
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/ecopulse
       - DEBUG=True
     volumes:
       - ./backend:/app
@@ -32,7 +32,7 @@ services:
   db:
     image: postgres:15-alpine
     environment:
-      - POSTGRES_DB=carbon
+      - POSTGRES_DB=ecopulse
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     ports:

@@ -1,25 +1,17 @@
 <div align="center">
-
-# 🌍 Carbon AI
+ 
+# 🌍 EcoPulse
 ### Carbon Footprint Intelligence Platform
 
 <br/>
-
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-brightgreen?style=for-the-badge&logo=vercel)](https://hack2skill-zwoy.vercel.app)
-[![GitHub](https://img.shields.io/badge/GitHub-black?style=for-the-badge&logo=github)](https://github.com/technest078-cmyk/hack2skill)
-[![API](https://img.shields.io/badge/API-Live-blue?style=for-the-badge)](https://carbon-api-aihm.onrender.com)
-
-<br/>
-
-**🏆 PromptWars Virtual 2026 - Main Challenge 3 🏆**
 
 *AI-powered platform to track, analyze, and reduce your carbon footprint*
 
 <br/>
 
-**🔗 Live Demo:** https://hack2skill-zwoy.vercel.app  
-**🔌 API Endpoint:** https://carbon-api-aihm.onrender.com  
-**📚 API Docs:** https://carbon-api-aihm.onrender.com/docs
+**🔗 Live Demo:** Coming Soon  
+**🔌 API Endpoint:** Coming Soon  
+**📚 API Docs:** Coming Soon
 
 </div>
 
@@ -231,7 +223,7 @@ POST /api/predict-impact
 
 **Frontend:** React 18 • Vite • Tailwind CSS • Framer Motion • Recharts  
 **Backend:** FastAPI • Python • Pydantic • Docker  
-**Deployment:** Vercel • Render
+**Deployment:** Ready for cloud deployment
 
 ---
 
@@ -341,18 +333,17 @@ Community eco-challenges and leaderboard
 
 ---
 
-## 👨‍💻 Author
+## 👥 Contributors
 
-**Nalla Poojitha Reddy**  
-PromptWars Virtual 2026 Participant
+Open Source Project - Contributions Welcome
 
 ---
 
 ## 🙏 Acknowledgments
 
-- **Hack2skill** - For organizing PromptWars Virtual 2026
-- **Google for Developers** - For collaboration
 - Open source community
+- Environmental data providers
+- All contributors and supporters
 
 ---
 
@@ -366,8 +357,8 @@ MIT License
 
 ## 🌍 Built for a Sustainable Future
 
-**GreenPulse AI**  
-*PromptWars Virtual 2026 Submission*
+**EcoPulse**  
+*Carbon Intelligence Platform*
 
 ⭐ **Star this repo if you find it helpful!** ⭐
 

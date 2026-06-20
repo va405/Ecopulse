@@ -269,7 +269,7 @@ Production-ready with:
 - 🔒 **Secure:** Enterprise-grade security (rate limiting, CSRF, XSS prevention)
 - 📱 **Responsive:** Works on all devices
 - ♿ **Accessible:** WCAG 2.1 AA compliant
-- 🌍 **Scalable:** Cloud-deployed (Vercel + Render)
+- 🌍 **Scalable:** Cloud-ready architecture
 - 🧪 **Tested:** 133+ total tests
 
 ### Environmental Potential
@@ -309,9 +309,12 @@ Backend (FastAPI + Python)
 
 ## 🚀 Real-World Deployment
 
-**Live Platform:** https://greenpulse-platform.vercel.app  
-**API Backend:** https://greenpulse-api-wv14.onrender.com  
-**GitHub Repository:** https://github.com/Poojareddy327/greenpulse-ai
+This platform is production-ready and can be deployed to any cloud infrastructure:
+
+**Deployment Options:**
+- Frontend: Vercel, Netlify, AWS S3, Azure Static Web Apps
+- Backend: Render, Railway, Fly.io, AWS, Google Cloud
+- Repository: GitHub, GitLab, Bitbucket
 
 ### Production Features
 ✅ HTTPS encryption  
@@ -427,7 +430,7 @@ Backend (FastAPI + Python)
 ✅ **Tracking** - Historical analytics and progress  
 
 ### Platform Readiness: ✅ Production-Grade
-- Live deployment at https://greenpulse-platform.vercel.app
+- Production-ready codebase
 - 133 tests (98% pass rate)
 - Enterprise security
 - WCAG 2.1 AA accessible

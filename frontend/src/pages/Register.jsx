@@ -39,8 +39,8 @@ const Register = () => {
           >
             <Activity className="w-10 h-10 text-white" />
           </motion.div>
-          <h1 className="text-3xl font-bold mb-2">Join Carbon AI</h1>
-          <p className="text-textMuted">Start your carbon analytics journey today</p>
+          <h1 className="text-3xl font-bold mb-2">Join EcoPulse</h1>
+          <p className="text-textMuted">Start your eco analytics journey today</p>
         </div>
 
         <form onSubmit={handleSubmit} className="glass-card p-8 space-y-6">

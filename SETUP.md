@@ -10,8 +10,8 @@
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/yourusername/greenpulse-ai.git
-cd greenpulse-ai
+git clone https://github.com/<your-username>/<your-repo>.git
+cd <your-repo>
 ```
 
 ### 2. Frontend Setup

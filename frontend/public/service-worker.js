@@ -1,5 +1,5 @@
-const CACHE_NAME = 'carbon-v1.0.0';
-const RUNTIME_CACHE = 'carbon-runtime';
+const CACHE_NAME = 'ecopulse-v1.0.0';
+const RUNTIME_CACHE = 'ecopulse-runtime';
 
 // Assets to cache on install
 const PRECACHE_URLS = [
@@ -114,7 +114,7 @@ self.addEventListener('push', (event) => {
   };
 
   event.waitUntil(
-    self.registration.showNotification('Carbon AI', options)
+    self.registration.showNotification('EcoPulse', options)
   );
 });
 

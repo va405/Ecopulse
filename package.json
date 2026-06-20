@@ -1,5 +1,5 @@
 {
-  "name": "carbon-ai",
+  "name": "ecopulse",
   "version": "1.0.0",
   "description": "AI-powered Sustainability & Environmental Impact Tracker",
   "scripts": {
@@ -18,6 +18,6 @@
     "react",
     "fastapi"
   ],
-  "author": "Carbon Team",
+  "author": "EcoPulse Team",
   "license": "MIT"
 }

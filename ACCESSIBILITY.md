@@ -148,7 +148,7 @@ GreenPulse AI is committed to providing an accessible experience for all users.
 ```bash
 # Lighthouse accessibility audit
 npm run build
-npx lighthouse https://greenpulse-platform.vercel.app --only-categories=accessibility
+npx lighthouse <your-deployed-url> --only-categories=accessibility
 
 # axe DevTools
 npm install -D @axe-core/react

@@ -284,8 +284,8 @@ git commit -m "feat: add comprehensive testing and improvements"
 git push origin main
 
 # 4. Verify deployment
-# - Check Vercel deployment
-# - Check Render deployment
+# - Check frontend deployment
+# - Check backend deployment
 # - Run Lighthouse audit
 ```
 
@@ -301,7 +301,7 @@ cd backend
 pytest test_main.py --cov=main --cov-report=html
 
 # Lighthouse audit
-npx lighthouse https://greenpulse-platform.vercel.app --view
+npx lighthouse <your-deployed-url> --view
 ```
 
 ---

@@ -166,7 +166,7 @@ The project includes automated testing on:
 ### View Test Results
 ```bash
 # Check GitHub Actions tab in your repository
-https://github.com/Poojareddy327/greenpulse-ai/actions
+# https://github.com/<your-username>/<your-repo>/actions
 ```
 
 ---

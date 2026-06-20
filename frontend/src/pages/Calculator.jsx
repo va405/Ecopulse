@@ -41,8 +41,8 @@ const Calculator = () => {
 
   const calculateImpact = async () => {
     try {
-      // Use environment variable for API URL, fallback to production URL
-      const API_URL = import.meta.env.VITE_API_URL || 'https://carbon-api-aihm.onrender.com'
+      // Use environment variable for API URL, fallback to localhost for development
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
       
       const response = await fetch(`${API_URL}/api/calculate-impact`, {
         method: 'POST',

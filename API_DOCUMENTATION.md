@@ -1,6 +1,6 @@
 # 📚 Carbon AI API Documentation
 
-**Base URL:** `https://carbon-api-aihm.onrender.com`
+**Base URL:** `<your-api-url>` (configure after deployment)
 
 **API Version:** 1.0.0
 
@@ -285,7 +285,7 @@ All errors follow this format:
 ### JavaScript/Node.js
 
 ```javascript
-const API_URL = 'https://carbon-api-aihm.onrender.com';
+const API_URL = 'https://your-api-url.com';
 
 async function calculateFootprint(data) {
   const response = await fetch(`${API_URL}/api/calculate-impact`, {
@@ -312,7 +312,7 @@ const result = await calculateFootprint({
 ```python
 import requests
 
-API_URL = 'https://carbon-api-aihm.onrender.com'
+API_URL = 'https://your-api-url.com'
 
 def calculate_footprint(data):
     response = requests.post(
@@ -332,7 +332,7 @@ result = calculate_footprint({
 ### cURL
 
 ```bash
-curl -X POST https://carbon-api-aihm.onrender.com/api/calculate-impact \
+curl -X POST https://your-api-url.com/api/calculate-impact \
   -H "Content-Type: application/json" \
   -d '{
     "carMiles": 100,
@@ -346,7 +346,7 @@ curl -X POST https://carbon-api-aihm.onrender.com/api/calculate-impact \
 ## 🧪 Testing
 
 Interactive API documentation available at:
-**https://carbon-api-aihm.onrender.com/docs**
+**https://your-api-url.com/docs** (after deployment)
 
 ---
 

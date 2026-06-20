@@ -33,8 +33,8 @@ const Navbar = () => {
               <Activity className="w-6 h-6 text-white drop-shadow-lg" />
             </motion.div>
             <div>
-              <span className="text-xl font-bold text-white tracking-tighter drop-shadow-lg">Carbon AI</span>
-              <div className="text-[10px] text-white/90 -mt-1 tracking-wide font-semibold hidden sm:block">CARBON ANALYTICS</div>
+              <span className="text-xl font-bold text-white tracking-tighter drop-shadow-lg">EcoPulse</span>
+              <div className="text-[10px] text-white/90 -mt-1 tracking-wide font-semibold hidden sm:block">ECO ANALYTICS</div>
             </div>
           </Link>
 

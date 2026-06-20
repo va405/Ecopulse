@@ -213,9 +213,9 @@ const handleScroll = throttle(() => {
 ### 9. **CDN & Asset Delivery**
 
 Current setup:
-- **Frontend**: Vercel Edge Network (180+ locations)
-- **Backend**: Render Global Network
-- **Static Assets**: Vercel CDN with automatic compression
+- **Frontend**: CDN with edge network
+- **Backend**: Cloud hosting with auto-scaling
+- **Static Assets**: CDN with automatic compression
 
 Optimizations:
 - ✅ Brotli compression enabled
@@ -351,7 +351,7 @@ export default defineConfig({
 - **React DevTools Profiler**: Component render times
 
 ### Monitoring Services
-- **Vercel Analytics**: Built-in performance monitoring
+- **Analytics**: Built-in performance monitoring
 - **Google Analytics**: Core Web Vitals tracking
 - **Sentry**: Error and performance monitoring
 
@@ -359,7 +359,7 @@ export default defineConfig({
 ```bash
 # Frontend performance audit
 npm run build
-npx lighthouse https://greenpulse-platform.vercel.app --view
+npx lighthouse <your-deployed-url> --view
 
 # Bundle size analysis
 npm run build

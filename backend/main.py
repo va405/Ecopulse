@@ -1,5 +1,5 @@
 """
-Carbon AI Backend API
+EcoPulse Backend API
 A comprehensive carbon footprint tracking and environmental awareness platform.
 
 This module provides REST API endpoints for:
@@ -24,7 +24,7 @@ import math
 import time
 
 app = FastAPI(
-    title="Carbon AI API",
+    title="EcoPulse API",
     version="1.0.0",
     docs_url="/docs",
     redoc_url="/redoc",
@@ -70,15 +70,14 @@ async def rate_limit_middleware(request: Request, call_next) -> JSONResponse:
     response = await call_next(request)
     return response
 
-# CORS middleware - Allow all Vercel domains
+# CORS middleware - Configure for your deployment
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:3000",
         "http://localhost:5173",
-        "https://carbon-platform.vercel.app",
-        "https://carbon-platform-*.vercel.app",
-        "https://*.vercel.app",
+        # Add your production frontend URL here after deployment
+        # Example: "https://your-app.yourdomain.com"
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -140,7 +139,7 @@ carbon_insights_cache = {}
 @app.get("/")
 def read_root() -> Dict[str, Any]:
     return {
-        "message": "Welcome to Carbon AI API",
+        "message": "Welcome to EcoPulse API",
         "version": "1.0.0",
         "status": "active",
         "endpoints": {
@@ -338,8 +337,18 @@ def predict_impact(data: PredictionRequest) -> Dict[str, Any]:
     try:
         historical = data.historicalData
         if not historical or len(historical) < 3:
-            raise HTTPException(status_code=400, detail="Insufficient historical data")
-        
+            # Return empty predictions with a message indicating insufficient data
+            return {
+                "predictions": [],
+                "insights": {
+                    "message": "Insufficient historical data for prediction",
+                    "totalSavings": 0,
+                    "percentageReduction": 0,
+                    "trend": "unknown",
+                    "recommendedActions": []
+                }
+            }
+        # Proceed with regression calculation
         # Extract carbon values
         carbon_values = [entry.get('carbon', 0) for entry in historical]
         n = len(carbon_values)
@@ -527,7 +536,7 @@ def ai_advisor_advanced(query: AIQuery) -> Dict[str, Any]:
             "difficulty": "Medium"
         },
         "tips": {
-            "message": "💡 Smart Sustainability Tips:\n\n**Transportation** 🚲\n• Bike/walk for trips < 2 miles\n• Carpool or use public transit\n• Combine errands to reduce trips\n\n**Energy** ⚡\n• Unplug devices when not in use\n• Use programmable thermostat\n• Air dry clothes when possible\n\n**Food** 🍽️\n• Buy local & seasonal produce\n• Reduce food waste by 50%\n• Try "Meatless Mondays"\n\n**Water** 💧\n• Fix leaks immediately\n• Install low-flow fixtures\n• Collect rainwater for plants",
+            "message": "💡 Smart Sustainability Tips:\n\n**Transportation** 🚲\n• Bike/walk for trips < 2 miles\n• Carpool or use public transit\n• Combine errands to reduce trips\n\n**Energy** ⚡\n• Unplug devices when not in use\n• Use programmable thermostat\n• Air dry clothes when possible\n\n**Food** 🍽️\n• Buy local & seasonal produce\n• Reduce food waste by 50%\n• Try 'Meatless Mondays'\n\n**Water** 💧\n• Fix leaks immediately\n• Install low-flow fixtures\n• Collect rainwater for plants",
             "estimatedSavings": "80-120 kg CO₂/month",
             "difficulty": "Easy"
         },
@@ -537,7 +546,7 @@ def ai_advisor_advanced(query: AIQuery) -> Dict[str, Any]:
             "difficulty": "Medium"
         },
         "general": {
-            "message": "🤖 Carbon AI Assistant:\n\nI can help you with:\n\n• **Carbon Reduction** - Personalized strategies\n• **Smart Tips** - Quick & effective actions\n• **Benchmarking** - Compare your performance\n• **Category-Specific** - Transport, energy, diet, etc.\n\nAsk me anything about reducing your environmental impact!",
+            "message": "🤖 EcoPulse Assistant:\n\nI can help you with:\n\n• **Carbon Reduction** - Personalized strategies\n• **Smart Tips** - Quick & effective actions\n• **Benchmarking** - Compare your performance\n• **Category-Specific** - Transport, energy, diet, etc.\n\nAsk me anything about reducing your environmental impact!",
             "estimatedSavings": "Start tracking to see estimates",
             "difficulty": "All levels"
         }
