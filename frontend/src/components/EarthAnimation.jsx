@@ -16,8 +16,8 @@ function Earth() {
     <mesh ref={meshRef}>
       <sphereGeometry args={[2, 64, 64]} />
       <meshStandardMaterial
-        color="#0EA5E9"
-        emissive="#0EA5E9"
+        color="#F97316"
+        emissive="#F97316"
         emissiveIntensity={0.2}
         roughness={0.7}
         metalness={0.3}
@@ -49,7 +49,7 @@ function Atmosphere() {
     <mesh ref={meshRef}>
       <sphereGeometry args={[2.3, 64, 64]} />
       <meshStandardMaterial
-        color="#60A5FA"
+        color="#F97316"
         transparent
         opacity={0.15}
         roughness={1}

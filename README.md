@@ -1,13 +1,15 @@
 <div align="center">
  
-# 🌍 EcoPulse
-### Carbon Footprint Intelligence Platform
+# 🔥 EcoPulse
+### Transform Your Impact, Ignite Change
 
 <br/>
 
-*AI-powered platform to track, analyze, and reduce your carbon footprint*
+*Empower your journey to sustainability with data-driven insights and actionable steps*
 
 <br/>
+
+> "Be the change you wish to see in the world" - Every small action creates ripples of positive impact
 
 **🔗 Live Demo:** Coming Soon  
 **🔌 API Endpoint:** Coming Soon  

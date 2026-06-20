@@ -7,27 +7,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#FF0080',      // Hot Pink - Primary brand
-        secondary: '#0080FF',    // Electric Blue - Secondary
-        accent: '#FF6B9D',       // Light Pink - Accent
-        danger: '#FF1744',       // Bright Red for high emissions
-        success: '#00E676',      // Bright Green for good results
-        warning: '#FFC107',      // Bright Amber
-        bgDark: '#0F0518',       // Deep purple-black
-        bgDarker: '#070210',     // Ultra dark
-        cardDark: '#1A0B2E',     // Purple-black card
-        cardLight: '#2D1544',    // Lighter purple card
+        primary: '#F97316',      // Energetic Orange - Primary brand
+        secondary: '#EF4444',    // Vibrant Red - Secondary
+        accent: '#F59E0B',       // Warm Amber - Accent
+        danger: '#EF4444',       // Bright Red for high emissions
+        success: '#10B981',      // Keep Green for good results
+        warning: '#F59E0B',      // Warm Amber
+        bgDark: '#1A0F0A',       // Warm Dark Brown (was blue-dark)
+        bgDarker: '#0F0807',     // Ultra dark warm (was blue-darker)
+        cardDark: '#2A1810',     // Warm dark card (was blue card)
+        cardLight: '#3D2418',    // Lighter warm card
         textLight: '#FFFFFF',
-        textMuted: '#E0B3FF',    // Light purple
-        pink: {
-          light: '#FFB3D9',
-          DEFAULT: '#FF0080',
-          dark: '#CC0066',
+        textMuted: '#FFE4D6',    // Light warm tone
+        orange: {
+          light: '#FDBA74',
+          DEFAULT: '#F97316',
+          dark: '#EA580C',
         },
-        blue: {
-          light: '#66B3FF',
-          DEFAULT: '#0080FF',
-          dark: '#0066CC',
+        red: {
+          light: '#FCA5A5',
+          DEFAULT: '#EF4444',
+          dark: '#DC2626',
         }
       },
       fontFamily: {
@@ -35,27 +35,26 @@ export default {
         display: ['Space Grotesk', 'Inter', 'sans-serif'],
       },
       backgroundImage: {
-        'gradient-primary': 'linear-gradient(135deg, #FF0080 0%, #FF6B9D 100%)',
-        'gradient-secondary': 'linear-gradient(135deg, #0080FF 0%, #0066CC 100%)',
-        'gradient-accent': 'linear-gradient(135deg, #FF6B9D 0%, #FFB3D9 100%)',
-        'gradient-analytics': 'linear-gradient(135deg, #FF0080 0%, #0080FF 50%, #FF6B9D 100%)',
-        'gradient-carbon': 'linear-gradient(135deg, #0080FF 0%, #FF0080 100%)',
-        'gradient-dark': 'linear-gradient(180deg, #0F0518 0%, #070210 100%)',
-        'gradient-mesh': 'radial-gradient(at 40% 20%, #FF0080 0%, transparent 50%), radial-gradient(at 80% 80%, #0080FF 0%, transparent 50%), radial-gradient(at 0% 50%, #FF6B9D 0%, transparent 50%)',
-        'gradient-instagram': 'linear-gradient(45deg, #FF0080, #FF6B9D, #0080FF, #66B3FF)',
-        'gradient-hero': 'linear-gradient(135deg, #FF0080 0%, #0080FF 50%, #FF6B9D 100%)',
-        'gradient-card': 'linear-gradient(145deg, rgba(255, 0, 128, 0.1) 0%, rgba(0, 128, 255, 0.1) 100%)',
+        'gradient-primary': 'linear-gradient(135deg, #F97316 0%, #F59E0B 100%)',
+        'gradient-secondary': 'linear-gradient(135deg, #EF4444 0%, #DC2626 100%)',
+        'gradient-accent': 'linear-gradient(135deg, #F59E0B 0%, #FDBA74 100%)',
+        'gradient-analytics': 'linear-gradient(135deg, #F97316 0%, #EF4444 50%, #F59E0B 100%)',
+        'gradient-carbon': 'linear-gradient(135deg, #EF4444 0%, #F97316 100%)',
+        'gradient-dark': 'linear-gradient(180deg, #1A0F0A 0%, #0F0807 100%)',
+        'gradient-mesh': 'radial-gradient(at 40% 20%, #F97316 0%, transparent 50%), radial-gradient(at 80% 80%, #EF4444 0%, transparent 50%), radial-gradient(at 0% 50%, #F59E0B 0%, transparent 50%)',
+        'gradient-hero': 'linear-gradient(135deg, #F97316 0%, #EF4444 50%, #F59E0B 100%)',
+        'gradient-card': 'linear-gradient(145deg, rgba(249, 115, 22, 0.1) 0%, rgba(239, 68, 68, 0.1) 100%)',
         'gradient-shine': 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
       },
       boxShadow: {
-        'glow-blue': '0 0 30px rgba(0, 128, 255, 0.6), 0 0 60px rgba(0, 128, 255, 0.4)',
-        'glow-purple': '0 0 30px rgba(255, 0, 128, 0.6), 0 0 60px rgba(255, 0, 128, 0.4)',
-        'glow-orange': '0 0 30px rgba(255, 107, 157, 0.6), 0 0 60px rgba(255, 107, 157, 0.4)',
-        'glow-analytics': '0 0 40px rgba(255, 0, 128, 0.4), 0 0 80px rgba(0, 128, 255, 0.3), 0 0 120px rgba(255, 107, 157, 0.2)',
-        'glow-multi': '0 0 20px rgba(255, 0, 128, 0.5), 0 0 40px rgba(0, 128, 255, 0.4), 0 0 60px rgba(255, 107, 157, 0.3)',
-        'inner-glow': 'inset 0 0 20px rgba(255, 0, 128, 0.3)',
-        'neon': '0 0 5px rgba(255, 0, 128, 0.6), 0 0 10px rgba(255, 0, 128, 0.5), 0 0 20px rgba(0, 128, 255, 0.4), 0 0 40px rgba(0, 128, 255, 0.3)',
-        'instagram': '0 8px 32px rgba(255, 0, 128, 0.2), 0 16px 64px rgba(0, 128, 255, 0.15)',
+        'glow-orange': '0 0 30px rgba(249, 115, 22, 0.6), 0 0 60px rgba(249, 115, 22, 0.4)',
+        'glow-red': '0 0 30px rgba(239, 68, 68, 0.6), 0 0 60px rgba(239, 68, 68, 0.4)',
+        'glow-amber': '0 0 30px rgba(245, 158, 11, 0.6), 0 0 60px rgba(245, 158, 11, 0.4)',
+        'glow-analytics': '0 0 40px rgba(249, 115, 22, 0.4), 0 0 80px rgba(239, 68, 68, 0.3), 0 0 120px rgba(245, 158, 11, 0.2)',
+        'glow-multi': '0 0 20px rgba(249, 115, 22, 0.5), 0 0 40px rgba(239, 68, 68, 0.4), 0 0 60px rgba(245, 158, 11, 0.3)',
+        'inner-glow': 'inset 0 0 20px rgba(249, 115, 22, 0.3)',
+        'neon': '0 0 5px rgba(249, 115, 22, 0.6), 0 0 10px rgba(249, 115, 22, 0.5), 0 0 20px rgba(239, 68, 68, 0.4), 0 0 40px rgba(239, 68, 68, 0.3)',
+        'fire': '0 8px 32px rgba(249, 115, 22, 0.2), 0 16px 64px rgba(239, 68, 68, 0.15)',
       },
       animation: {
         'float': 'float 8s ease-in-out infinite',

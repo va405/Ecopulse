@@ -126,10 +126,10 @@ const Calculator = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            Calculate Your <span className="text-primary drop-shadow-[0_0_20px_rgba(37,99,235,0.8)]">Environmental Impact</span>
+            Discover Your <span className="text-primary drop-shadow-glow-orange">Environmental Impact</span>
           </h1>
           <p className="text-textLight text-lg">
-            Answer a few questions to understand your carbon and water footprint
+            Every journey begins with awareness. Let's measure your footprint and find ways to reduce it! 🌍✨
           </p>
         </motion.div>
 
@@ -178,7 +178,7 @@ const Calculator = () => {
           </Section>
 
           {/* Water */}
-          <Section icon={Droplets} title="Water Usage" color="cyan">
+          <Section icon={Droplets} title="Water Usage" color="amber">
             <Input
               label="Daily shower minutes"
               name="showerMinutes"
@@ -232,7 +232,7 @@ const Calculator = () => {
           className="mt-8 text-center"
         >
           <button onClick={calculateImpact} className="btn-primary flex items-center gap-2 mx-auto">
-            Calculate Impact <ArrowRight className="w-5 h-5" />
+            Calculate My Impact 🔥 <ArrowRight className="w-5 h-5" />
           </button>
         </motion.div>
 
@@ -243,7 +243,7 @@ const Calculator = () => {
             animate={{ opacity: 1, scale: 1 }}
             className="mt-12"
           >
-            <h2 className="text-3xl font-bold text-center mb-8">Your Impact Results</h2>
+            <h2 className="text-3xl font-bold text-center mb-8">Your Impact Results - Time to Shine! ⚡</h2>
             
             {/* Animated Stats Cards with 3D effect */}
             <div className="mb-8">

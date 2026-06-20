@@ -67,7 +67,7 @@ const Learning = () => {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-green rounded-2xl shadow-glow-green">
+            <div className="p-3 bg-gradient-primary rounded-2xl shadow-glow-orange">
               <BookOpen className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl font-bold text-white drop-shadow-lg">Eco Learning Hub</h1>

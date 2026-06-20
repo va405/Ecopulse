@@ -15,20 +15,20 @@ const Home = () => {
   const features = [
     {
       icon: Target,
-      title: 'Carbon Breakdown Analyzer',
-      description: 'Analyze transportation, energy, food, and lifestyle emissions with precision. Get detailed insights into every emission source.',
+      title: 'Track Every Footprint',
+      description: 'Measure what matters. Track transportation, energy, food, and lifestyle emissions. See the real impact of your daily choices.',
       gradient: 'gradient-primary'
     },
     {
       icon: Brain,
-      title: 'Carbon Intelligence Engine',
-      description: 'AI-powered analysis of emission patterns with personalized carbon reduction strategies based on your lifestyle data.',
+      title: 'Smart Insights, Real Action',
+      description: 'AI-powered recommendations tailored to your lifestyle. Get actionable steps that make a difference, not just data.',
       gradient: 'gradient-secondary'
     },
     {
       icon: BarChart3,
-      title: 'Predictive Carbon Analytics',
-      description: 'Forecast future emissions, track reduction trends, and benchmark against global averages with advanced analytics.',
+      title: 'Visualize Your Progress',
+      description: 'Watch your impact shrink. Compare with others. Celebrate milestones. Turn numbers into motivation.',
       gradient: 'gradient-accent'
     }
   ]
@@ -72,28 +72,28 @@ const Home = () => {
                   animate={{ y: [0, -20, 0] }}
                   transition={{ duration: 2, repeat: Infinity, delay: 0 }}
                 >
-                  📊
+                  🌱
                 </motion.span>
                 <motion.span 
                   className="text-6xl"
                   animate={{ y: [0, -20, 0] }}
                   transition={{ duration: 2, repeat: Infinity, delay: 0.3 }}
                 >
-                  🧠
+                  🌍
                 </motion.span>
                 <motion.span 
                   className="text-6xl"
                   animate={{ y: [0, -20, 0] }}
                   transition={{ duration: 2, repeat: Infinity, delay: 0.6 }}
                 >
-                  ⚡
+                  💚
                 </motion.span>
               </motion.div>
               
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight tracking-tighter">
-                Your Carbon Footprint.{' '}
-                <span className="text-white relative drop-shadow-[0_0_30px_rgba(255,255,255,0.5)]">
-                  Visualized. Optimized.
+              <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight tracking-tighter">
+                Small Steps.{' '}
+                <span className="text-white relative drop-shadow-[0_0_30px_rgba(249,115,22,0.8)]">
+                  Big Impact. Start Now.
                   <motion.span
                     className="absolute inset-0 bg-gradient-analytics opacity-10 blur-xl"
                     animate={{ scale: [1, 1.2, 1] }}
@@ -106,9 +106,17 @@ const Home = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="text-xl md:text-2xl text-textLight mb-10 max-w-3xl mx-auto leading-relaxed"
+              className="text-xl md:text-2xl text-textLight mb-6 max-w-3xl mx-auto leading-relaxed"
             >
-              Advanced <span className="font-bold text-white drop-shadow-lg">AI</span> meets environmental action. Calculate, analyze, and optimize your <span className="text-white font-semibold drop-shadow-lg">carbon footprint</span> in real-time.
+              <span className="font-bold text-primary drop-shadow-glow-orange">Every action matters.</span> Track your carbon footprint, make <span className="text-white font-semibold drop-shadow-lg">conscious choices</span>, and become the change our planet needs.
+            </motion.p>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
+              className="text-lg text-textLight/90 mb-10 max-w-2xl mx-auto italic"
+            >
+              "Act as if what you do makes a difference. It does." 🌟
             </motion.p>
           </motion.div>
 
@@ -119,11 +127,11 @@ const Home = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20"
           >
             <Link to="/calculator" className="btn-primary flex items-center gap-2 group text-lg px-10">
-              Calculate My Impact 
+              Start Your Journey 🔥
               <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
             </Link>
             <Link to="/dashboard" className="btn-secondary flex items-center gap-2 text-lg px-10">
-              View Carbon Dashboard
+              Track Your Impact ⚡
             </Link>
           </motion.div>
 
@@ -136,7 +144,7 @@ const Home = () => {
           >
             {stats.map((stat, index) => {
               const Icon = stat.icon
-              const colors = ['#2563EB', '#7C3AED', '#F97316', '#2563EB']
+              const colors = ['#F97316', '#EF4444', '#F59E0B', '#FB923C']
               return (
                 <motion.div
                   key={index}
@@ -194,10 +202,10 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-4 tracking-tighter text-white drop-shadow-lg">
-              Advanced Features for <span className="text-primary drop-shadow-[0_0_30px_rgba(37,99,235,0.9)]">Carbon Intelligence</span>
+              Empower Yourself. <span className="text-primary drop-shadow-glow-orange">Transform Tomorrow.</span>
             </h2>
             <p className="text-lg md:text-xl text-textLight max-w-2xl mx-auto">
-              Understand your carbon footprint with precision. Forecast future emissions. Implement data-backed strategies.
+              Small steps create big waves. Start today, inspire others, build a sustainable future. 🌍✨
             </p>
           </motion.div>
 
@@ -258,16 +266,19 @@ const Home = () => {
             >
               <motion.h2 
                 className="text-3xl md:text-5xl font-bold mb-4 tracking-tighter text-white"
-                animate={{ textShadow: ['0 0 20px rgba(37, 99, 235, 0.5)', '0 0 40px rgba(124, 58, 237, 0.5)', '0 0 20px rgba(37, 99, 235, 0.5)'] }}
+                animate={{ textShadow: ['0 0 20px rgba(249, 115, 22, 0.5)', '0 0 40px rgba(239, 68, 68, 0.5)', '0 0 20px rgba(249, 115, 22, 0.5)'] }}
                 transition={{ duration: 3, repeat: Infinity }}
               >
-                Start Your Carbon Analytics Journey
+                Ready to Make a Difference? 🔥
               </motion.h2>
-              <p className="text-lg md:text-xl text-textLight mb-8">
-                Join thousands analyzing their emissions. Track trends. Forecast reductions. Build low-carbon habits. 📊⚡
+              <p className="text-lg md:text-xl text-textLight mb-4">
+                Join a community of changemakers. Track, reduce, inspire. Your journey to sustainability starts now.
+              </p>
+              <p className="text-md italic text-textLight/80 mb-8">
+                "Small acts, when multiplied by millions, can transform the world" 🌍
               </p>
               <Link to="/register" className="btn-primary inline-flex items-center gap-2 group text-lg px-10">
-                Get Started Free 
+                Start Making an Impact
                 <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
               </Link>
             </motion.div>

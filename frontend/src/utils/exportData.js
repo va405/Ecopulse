@@ -73,8 +73,8 @@ export const exportToPDF = (elementId, filename = 'ecopulse-report.pdf') => {
           padding: 20px;
         }
         .no-print { display: none !important; }
-        h1 { color: #2563EB; }
-        h2 { color: #7C3AED; margin-top: 20px; }
+        h1 { color: #F97316; }
+        h2 { color: #EF4444; margin-top: 20px; }
         table { 
           width: 100%; 
           border-collapse: collapse; 
@@ -86,13 +86,13 @@ export const exportToPDF = (elementId, filename = 'ecopulse-report.pdf') => {
           text-align: left;
         }
         th { 
-          background-color: #2563EB; 
+          background-color: #F97316; 
           color: white;
         }
         .header {
           text-align: center;
           margin-bottom: 30px;
-          border-bottom: 3px solid #2563EB;
+          border-bottom: 3px solid #F97316;
           padding-bottom: 20px;
         }
         .footer {

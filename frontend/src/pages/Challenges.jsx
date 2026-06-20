@@ -15,7 +15,7 @@ const Challenges = () => {
       points: 250,
       participants: 1250,
       icon: '🌊',
-      color: 'blue'
+      color: 'orange'
     },
     {
       id: 2,
@@ -37,7 +37,7 @@ const Challenges = () => {
       points: 400,
       participants: 2100,
       icon: '⚡',
-      color: 'yellow'
+      color: 'amber'
     }
   ]
 
@@ -69,7 +69,7 @@ const Challenges = () => {
           className="text-center mb-8"
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-green rounded-2xl shadow-glow-green">
+            <div className="p-3 bg-gradient-primary rounded-2xl shadow-glow-orange">
               <Trophy className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl font-bold text-white drop-shadow-lg">Eco Challenges</h1>
@@ -151,7 +151,7 @@ const ChallengeCard = ({ challenge }) => {
             initial={{ width: 0 }}
             animate={{ width: `${progress}%` }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="h-full bg-gradient-green"
+            className="h-full bg-gradient-primary"
           />
         </div>
       </div>
@@ -213,7 +213,7 @@ const TabButton = ({ active, onClick, children }) => (
     onClick={onClick}
     className={`px-6 py-2 rounded-lg font-semibold transition-all ${
       active
-        ? 'bg-gradient-green text-white shadow-glow-green'
+        ? 'bg-gradient-primary text-white shadow-glow-orange'
         : 'bg-cardDark/50 text-textLight/70 hover:text-textLight'
     }`}
   >

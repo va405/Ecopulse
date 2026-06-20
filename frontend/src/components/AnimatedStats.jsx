@@ -33,10 +33,10 @@ const AnimatedStats = ({ carbon = 180, water = 2800, trees = 40, energy = 300 })
         className="glass-card p-6 relative"
         style={{ transformStyle: 'preserve-3d' }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-transparent rounded-2xl" 
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-transparent rounded-2xl" 
              style={{ transform: 'translateZ(-10px)' }} />
-        <Droplets className="w-12 h-12 text-blue-400 mb-3" style={{ transform: 'translateZ(20px)' }} />
-        <div className="text-4xl font-bold text-blue-400 mb-1" style={{ transform: 'translateZ(15px)' }}>
+        <Droplets className="w-12 h-12 text-amber-400 mb-3" style={{ transform: 'translateZ(20px)' }} />
+        <div className="text-4xl font-bold text-amber-400 mb-1" style={{ transform: 'translateZ(15px)' }}>
           {water}
         </div>
         <div className="text-sm text-textLight/60" style={{ transform: 'translateZ(10px)' }}>

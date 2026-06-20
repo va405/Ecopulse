@@ -11,9 +11,9 @@ const InteractiveCarbonWheel = ({ onCalculate }) => {
   })
 
   const categories = [
-    { key: 'transport', icon: Car, label: 'Transport', color: '#2563EB', emoji: '🚗' },
-    { key: 'energy', icon: Zap, label: 'Energy', color: '#7C3AED', emoji: '⚡' },
-    { key: 'food', icon: Utensils, label: 'Food', color: '#F97316', emoji: '🍽️' },
+    { key: 'transport', icon: Car, label: 'Transport', color: '#F97316', emoji: '🚗' },
+    { key: 'energy', icon: Zap, label: 'Energy', color: '#EF4444', emoji: '⚡' },
+    { key: 'food', icon: Utensils, label: 'Food', color: '#F59E0B', emoji: '🍽️' },
     { key: 'waste', icon: Trash2, label: 'Waste', color: '#10B981', emoji: '♻️' }
   ]
 

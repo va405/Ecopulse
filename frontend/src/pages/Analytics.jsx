@@ -36,17 +36,17 @@ const Analytics = () => {
   ]
 
   const categoryBreakdown = [
-    { name: 'Transportation', value: 35, color: '#2563EB' },
-    { name: 'Energy', value: 28, color: '#7C3AED' },
-    { name: 'Food', value: 20, color: '#F97316' },
+    { name: 'Transportation', value: 35, color: '#F97316' },
+    { name: 'Energy', value: 28, color: '#EF4444' },
+    { name: 'Food', value: 20, color: '#F59E0B' },
     { name: 'Waste', value: 12, color: '#10B981' },
     { name: 'Other', value: 5, color: '#6B7280' }
   ]
 
   const regionalData = [
-    { region: 'North America', users: 4200, carbon: 68000, color: '#2563EB' },
-    { region: 'Europe', users: 3800, carbon: 62000, color: '#7C3AED' },
-    { region: 'Asia', users: 5100, carbon: 78000, color: '#F97316' },
+    { region: 'North America', users: 4200, carbon: 68000, color: '#F97316' },
+    { region: 'Europe', users: 3800, carbon: 62000, color: '#EF4444' },
+    { region: 'Asia', users: 5100, carbon: 78000, color: '#F59E0B' },
     { region: 'South America', users: 1200, carbon: 18000, color: '#10B981' },
     { region: 'Others', users: 1120, carbon: 8567, color: '#6B7280' }
   ]
@@ -155,8 +155,8 @@ const Analytics = () => {
                 <AreaChart data={monthlyGrowth}>
                   <defs>
                     <linearGradient id="colorUsers" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#2563EB" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#2563EB" stopOpacity={0}/>
+                      <stop offset="5%" stopColor="#F97316" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#F97316" stopOpacity={0}/>
                     </linearGradient>
                     <linearGradient id="colorCarbon" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#10B981" stopOpacity={0.3}/>
@@ -166,8 +166,8 @@ const Analytics = () => {
                   <CartesianGrid strokeDasharray="3 3" stroke="#1F2937" />
                   <XAxis dataKey="month" stroke="#9CA3AF" />
                   <YAxis stroke="#9CA3AF" />
-                  <Tooltip contentStyle={{ backgroundColor: '#0F172A', border: '1px solid #2563EB' }} />
-                  <Area type="monotone" dataKey="users" stroke="#2563EB" fillOpacity={1} fill="url(#colorUsers)" strokeWidth={3} />
+                  <Tooltip contentStyle={{ backgroundColor: '#1A0F0A', border: '1px solid #F97316' }} />
+                  <Area type="monotone" dataKey="users" stroke="#F97316" fillOpacity={1} fill="url(#colorUsers)" strokeWidth={3} />
                   <Area type="monotone" dataKey="carbon" stroke="#10B981" fillOpacity={1} fill="url(#colorCarbon)" strokeWidth={3} />
                 </AreaChart>
               </ResponsiveContainer>
@@ -245,8 +245,8 @@ const Analytics = () => {
                 <CartesianGrid strokeDasharray="3 3" stroke="#1F2937" />
                 <XAxis dataKey="region" stroke="#9CA3AF" />
                 <YAxis stroke="#9CA3AF" />
-                <Tooltip contentStyle={{ backgroundColor: '#0F172A', border: '1px solid #7C3AED' }} />
-                <Bar dataKey="users" fill="#2563EB" radius={[8, 8, 0, 0]} />
+                <Tooltip contentStyle={{ backgroundColor: '#1A0F0A', border: '1px solid #EF4444' }} />
+                <Bar dataKey="users" fill="#F97316" radius={[8, 8, 0, 0]} />
                 <Bar dataKey="carbon" fill="#10B981" radius={[8, 8, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>

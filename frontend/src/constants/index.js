@@ -222,13 +222,13 @@ export const ANIMATION_DURATION = {
 
 // Chart Colors
 export const CHART_COLORS = {
-  PRIMARY: '#2563EB',
-  SECONDARY: '#7C3AED',
-  ACCENT: '#F97316',
+  PRIMARY: '#F97316',    // Energetic Orange
+  SECONDARY: '#EF4444',  // Vibrant Red
+  ACCENT: '#F59E0B',     // Warm Amber
   SUCCESS: '#10B981',
   WARNING: '#F59E0B',
   DANGER: '#EF4444',
-  INFO: '#06B6D4',
+  INFO: '#FDBA74',
   GRAY: '#6B7280',
 }
 

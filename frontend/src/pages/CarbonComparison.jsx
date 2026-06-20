@@ -117,7 +117,7 @@ const CarbonComparison = () => {
                   transition={{ delay: index * 0.1 }}
                   className="glass-card p-6"
                 >
-                  <div className="w-12 h-12 bg-gradient-green rounded-lg mb-4 flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gradient-primary rounded-lg mb-4 flex items-center justify-center">
                     <Icon className="w-6 h-6 text-white" />
                   </div>
                   <h3 className="text-xl font-bold mb-4 text-primary">{item.title}</h3>

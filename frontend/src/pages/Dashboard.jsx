@@ -108,7 +108,7 @@ const Dashboard = () => {
                 <XAxis dataKey="month" stroke="#9CA3AF" />
                 <YAxis stroke="#9CA3AF" />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0F172A', border: '1px solid #22C55E' }}
+                  contentStyle={{ backgroundColor: '#1A0F0A', border: '1px solid #22C55E' }}
                 />
                 <Line type="monotone" dataKey="carbon" stroke="#EF4444" strokeWidth={2} />
                 <Line type="monotone" dataKey="score" stroke="#22C55E" strokeWidth={2} />
@@ -132,7 +132,7 @@ const Dashboard = () => {
                 <XAxis dataKey="category" stroke="#9CA3AF" />
                 <YAxis stroke="#9CA3AF" />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#0F172A', border: '1px solid #22C55E' }}
+                  contentStyle={{ backgroundColor: '#1A0F0A', border: '1px solid #22C55E' }}
                 />
                 <Bar dataKey="value" fill="#22C55E" radius={[8, 8, 0, 0]} />
               </BarChart>

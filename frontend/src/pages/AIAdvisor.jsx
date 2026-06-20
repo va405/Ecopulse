@@ -56,7 +56,7 @@ const AIAdvisor = () => {
           className="text-center mb-8"
         >
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="p-3 bg-gradient-green rounded-2xl shadow-glow-green">
+            <div className="p-3 bg-gradient-primary rounded-2xl shadow-glow-orange">
               <Bot className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl font-bold text-white drop-shadow-lg">AI Eco Advisor</h1>
@@ -79,7 +79,7 @@ const AIAdvisor = () => {
                 <div
                   className={`max-w-[80%] p-4 rounded-2xl ${
                     msg.type === 'user'
-                      ? 'bg-gradient-green text-white'
+                      ? 'bg-gradient-primary text-white'
                       : 'bg-cardDark border border-primary/20'
                   }`}
                 >

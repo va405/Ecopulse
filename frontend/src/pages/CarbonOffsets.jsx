@@ -83,7 +83,7 @@ const CarbonOffsets = () => {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="text-primary drop-shadow-[0_0_20px_rgba(37,99,235,0.8)]">Carbon Offset</span> Marketplace
+            <span className="text-primary drop-shadow-glow-orange">Carbon Offset</span> Marketplace
           </h1>
           <p className="text-xl text-textLight mb-8">
             Offset your carbon emissions by supporting verified climate projects
@@ -126,7 +126,7 @@ const CarbonOffsets = () => {
                 }`}
               >
                 {pkg.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-green px-4 py-1 rounded-full text-sm font-semibold">
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-primary px-4 py-1 rounded-full text-sm font-semibold">
                     Most Popular
                   </div>
                 )}
