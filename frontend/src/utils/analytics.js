@@ -1,6 +1,42 @@
-// Performance monitoring and analytics
+/**
+ * Performance Monitoring and Analytics Utility
+ * 
+ * Provides comprehensive performance tracking, error monitoring, and user analytics
+ * for the EcoPulse application.
+ * 
+ * @module analytics
+ * @author EcoPulse Team
+ * @version 1.0.0
+ */
 
+/**
+ * PerformanceMonitor class for tracking application performance metrics
+ * 
+ * Tracks page load times, API calls, errors, and user actions.
+ * Uses singleton pattern for consistent monitoring across the application.
+ * 
+ * @class
+ * @example
+ * import { performanceMonitor } from './utils/analytics';
+ * 
+ * // Track API call
+ * performanceMonitor.trackAPICall('/api/calculate', 150, true);
+ * 
+ * // Get performance report
+ * const report = performanceMonitor.getReport();
+ * console.log(`Average API time: ${report.avgAPITime}ms`);
+ */
 class PerformanceMonitor {
+  /**
+   * Initialize the PerformanceMonitor with empty metrics
+   * 
+   * @constructor
+   * @property {Object} metrics - Container for all tracking metrics
+   * @property {number} metrics.pageLoadTime - Page load duration in milliseconds
+   * @property {Array} metrics.apiCalls - Array of API call records
+   * @property {Array} metrics.errors - Array of error records
+   * @property {Array} metrics.userActions - Array of user action records
+   */
   constructor() {
     this.metrics = {
       pageLoadTime: 0,
@@ -10,7 +46,29 @@ class PerformanceMonitor {
     };
   }
 
-  // Track page load performance
+  /**
+   * Track page load performance metrics
+   * 
+   * Captures detailed timing information about page load using the Performance API.
+   * Includes metrics for DNS lookup, TCP connection, TTFB, and resource loading.
+   * 
+   * @method
+   * @returns {Object|null} Performance metrics object or null if Performance API unavailable
+   * @returns {number} return.pageLoadTime - Total page load time in ms
+   * @returns {number} return.domContentLoaded - Time to DOMContentLoaded event in ms
+   * @returns {number} return.resourcesLoaded - Time to load all resources in ms
+   * @returns {number} return.dns - DNS lookup duration in ms
+   * @returns {number} return.tcp - TCP connection duration in ms
+   * @returns {number} return.ttfb - Time to first byte in ms
+   * 
+   * @example
+   * const perfMetrics = monitor.trackPageLoad();
+   * if (perfMetrics) {
+   *   console.log(`Page loaded in ${perfMetrics.pageLoadTime}ms`);
+   * }
+   * 
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Performance_API}
+   */
   trackPageLoad() {
     if (typeof window !== 'undefined' && window.performance) {
       const perfData = window.performance.timing;
@@ -30,7 +88,30 @@ class PerformanceMonitor {
     return null;
   }
 
-  // Track API call performance
+  /**
+   * Track API call performance and success rate
+   * 
+   * Records endpoint, duration, and success status for each API call.
+   * Automatically maintains a rolling window of the last 50 calls to prevent memory bloat.
+   * 
+   * @method
+   * @param {string} endpoint - API endpoint path (e.g., '/api/calculate')
+   * @param {number} duration - Call duration in milliseconds
+   * @param {boolean} success - Whether the API call succeeded
+   * @returns {void}
+   * 
+   * @example
+   * // Track successful API call
+   * monitor.trackAPICall('/api/calculate', 150, true);
+   * 
+   * // Track failed API call
+   * monitor.trackAPICall('/api/recommend', 3000, false);
+   * 
+   * @throws {TypeError} If parameters are of incorrect type
+   * 
+   * Time Complexity: O(1) amortized - O(n) when array length exceeds 50
+   * Space Complexity: O(1) - maintains fixed maximum of 50 records
+   */
   trackAPICall(endpoint, duration, success) {
     this.metrics.apiCalls.push({
       endpoint,

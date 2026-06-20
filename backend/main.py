@@ -34,6 +34,7 @@ app = FastAPI(
 # Security Headers Middleware
 @app.middleware("http")
 async def add_security_headers(request: Request, call_next) -> JSONResponse:
+    """Add comprehensive security headers to all responses"""
     response = await call_next(request)
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-Frame-Options"] = "DENY"
@@ -41,6 +42,14 @@ async def add_security_headers(request: Request, call_next) -> JSONResponse:
     response.headers["Strict-Transport-Security"] = "max-age=31536000; includeSubDomains"
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
     response.headers["Permissions-Policy"] = "geolocation=(), microphone=(), camera=()"
+    response.headers["Content-Security-Policy"] = (
+        "default-src 'self'; "
+        "script-src 'self' 'unsafe-inline' 'unsafe-eval'; "
+        "style-src 'self' 'unsafe-inline'; "
+        "img-src 'self' data: https:; "
+        "font-src 'self' data:; "
+        "connect-src 'self' https://ecopulse-api-w5at.onrender.com;"
+    )
     return response
 
 # Rate Limiting Middleware (Simple implementation)
