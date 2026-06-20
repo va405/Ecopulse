@@ -19,11 +19,11 @@ if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
       .register('/service-worker.js')
-      .then(registration => {
-        console.log('✅ Service Worker registered')
+      .then(() => {
+        // Service Worker registered successfully
       })
-      .catch(error => {
-        console.warn('Service Worker skipped')
+      .catch(() => {
+        // Service Worker registration skipped
       })
   })
 }

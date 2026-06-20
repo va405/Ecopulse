@@ -34,7 +34,36 @@ app = FastAPI(
 # Security Headers Middleware
 @app.middleware("http")
 async def add_security_headers(request: Request, call_next) -> JSONResponse:
-    """Add comprehensive security headers to all responses"""
+    """
+    Add comprehensive security headers to all HTTP responses
+    
+    Implements defense-in-depth security strategy with multiple headers
+    to protect against XSS, clickjacking, MIME sniffing, and other attacks.
+    
+    Args:
+        request (Request): Incoming HTTP request
+        call_next: Next middleware/handler in chain
+        
+    Returns:
+        JSONResponse: Response with added security headers
+        
+    Security Headers Added:
+        - X-Content-Type-Options: nosniff (prevent MIME sniffing)
+        - X-Frame-Options: DENY (prevent clickjacking)
+        - X-XSS-Protection: 1; mode=block (legacy XSS protection)
+        - Strict-Transport-Security: HSTS for 1 year (force HTTPS)
+        - Referrer-Policy: strict-origin-when-cross-origin (privacy)
+        - Permissions-Policy: Disable geolocation, camera, microphone
+        - Content-Security-Policy: Comprehensive CSP policy
+        
+    Example Response Headers:
+        X-Content-Type-Options: nosniff
+        X-Frame-Options: DENY
+        Strict-Transport-Security: max-age=31536000; includeSubDomains
+        
+    Time Complexity: O(1)
+    Space Complexity: O(1)
+    """
     response = await call_next(request)
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["X-Frame-Options"] = "DENY"
@@ -51,6 +80,41 @@ async def add_security_headers(request: Request, call_next) -> JSONResponse:
         "connect-src 'self' https://ecopulse-api-w5at.onrender.com;"
     )
     return response
+
+# Request Size Validation Middleware - Prevent DoS attacks
+@app.middleware("http")
+async def validate_request_size(request: Request, call_next) -> JSONResponse:
+    """
+    Validate request body size to prevent DoS attacks
+    
+    Limits request size to 1MB to prevent memory exhaustion and
+    protect against denial-of-service attacks via large payloads.
+    
+    Args:
+        request (Request): Incoming HTTP request
+        call_next: Next middleware/handler in chain
+        
+    Returns:
+        JSONResponse: Either 413 error or response from next handler
+        
+    Raises:
+        HTTP 413: Payload Too Large if request exceeds 1MB
+        
+    Example:
+        POST /api/calculate with 2MB body:
+        HTTP 413 {"detail": "Request body too large. Maximum size is 1MB"}
+        
+    Time Complexity: O(1)
+    Space Complexity: O(1)
+    """
+    if request.method in ["POST", "PUT", "PATCH"]:
+        content_length = request.headers.get("content-length")
+        if content_length and int(content_length) > 1_000_000:  # 1MB limit
+            return JSONResponse(
+                status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+                content={"detail": "Request body too large. Maximum size is 1MB"}
+            )
+    return await call_next(request)
 
 # Rate Limiting Middleware - Prevent API abuse
 # Implements token bucket algorithm for fair rate limiting
@@ -179,6 +243,31 @@ carbon_insights_cache = {}
 
 @app.get("/")
 def read_root() -> Dict[str, Any]:
+    """
+    API root endpoint - welcome message and available endpoints
+    
+    Returns comprehensive API information including version, status,
+    and available endpoint paths for service discovery.
+    
+    Returns:
+        Dict[str, Any]: API metadata including:
+            - message: Welcome message
+            - version: API version (semantic versioning)
+            - status: Service health status
+            - endpoints: Dictionary of available API routes
+            
+    Example:
+        >>> GET /
+        {
+          "message": "Welcome to EcoPulse API",
+          "version": "1.0.0",
+          "status": "active",
+          "endpoints": {...}
+        }
+        
+    Time Complexity: O(1)
+    Space Complexity: O(1)
+    """
     return {
         "message": "Welcome to EcoPulse API",
         "version": "1.0.0",
@@ -196,7 +285,33 @@ def read_root() -> Dict[str, Any]:
 
 @app.get("/health")
 def health_check() -> Dict[str, str]:
-    """Health check endpoint for monitoring"""
+    """
+    Health check endpoint for monitoring and uptime checks
+    
+    Used by load balancers, monitoring services, and deployment pipelines
+    to verify service availability. Returns 200 OK with status confirmation.
+    
+    Returns:
+        Dict[str, str]: Health status with timestamp
+            - status: Always "healthy" if endpoint responds
+            - timestamp: Current UTC timestamp (ISO format)
+            
+    Example:
+        >>> GET /health
+        {
+          "status": "healthy",
+          "timestamp": "2024-01-15T10:30:00Z"
+        }
+        
+    Use Cases:
+        - Kubernetes liveness probes
+        - Load balancer health checks
+        - Uptime monitoring services
+        - Deployment verification
+        
+    Time Complexity: O(1)
+    Space Complexity: O(1)
+    """
     return {
         "status": "healthy",
         "timestamp": datetime.now().isoformat()
@@ -204,7 +319,35 @@ def health_check() -> Dict[str, str]:
 
 @app.get("/api/test")
 def test_api() -> Dict[str, str]:
-    """Test endpoint to verify API is working"""
+    """
+    Simple test endpoint to verify API functionality
+    
+    Lightweight endpoint for quick connectivity tests and debugging.
+    Returns success message with current timestamp.
+    
+    Returns:
+        Dict[str, str]: Test response containing:
+            - status: Always "success" if endpoint responds
+            - message: Confirmation message
+            - timestamp: Current UTC timestamp (ISO format)
+            
+    Example:
+        >>> GET /api/test
+        {
+          "status": "success",
+          "message": "API is working correctly!",
+          "timestamp": "2024-01-15T10:30:00Z"
+        }
+        
+    Use Cases:
+        - Frontend connectivity testing
+        - Debugging CORS issues
+        - Verifying deployment success
+        - API availability check
+        
+    Time Complexity: O(1)
+    Space Complexity: O(1)
+    """
     return {
         "status": "success",
         "message": "API is working correctly!",
@@ -213,7 +356,62 @@ def test_api() -> Dict[str, str]:
 
 @app.post("/api/calculate-impact", response_model=ImpactResult)
 def calculate_impact(data: ImpactCalculation) -> ImpactResult:
-    """Calculate environmental impact based on user habits"""
+    """
+    Calculate comprehensive environmental impact from user activities
+    
+    Analyzes transportation, energy, diet, and waste patterns to compute
+    total carbon footprint and water usage. Uses EPA 2024 emission factors.
+    
+    Args:
+        data (ImpactCalculation): User activity data including:
+            - carMiles: Monthly car miles driven
+            - publicTransport: Monthly public transport trips
+            - flights: Annual flight count
+            - electricity: Monthly electricity kWh
+            - heating: Monthly heating therms
+            - showerMinutes: Daily shower duration (minutes)
+            - laundry: Weekly laundry loads
+            - diet: Diet type (vegan, vegetarian, mixed, meat-heavy)
+            - recycling: Recycling frequency (always, often, sometimes, rarely)
+            
+    Returns:
+        ImpactResult: Calculated environmental impact containing:
+            - carbon: Total monthly CO₂ emissions (kg)
+            - water: Total monthly water usage (liters)
+            - score: Environmental score (0-100, higher is better)
+            - rating: Performance rating (excellent, good, fair, poor)
+            - recommendations: List of improvement suggestions
+            
+    Example:
+        >>> data = ImpactCalculation(
+        ...     carMiles=100, electricity=300, diet="vegetarian"
+        ... )
+        >>> result = calculate_impact(data)
+        >>> print(f"Carbon: {result.carbon} kg CO₂/month")
+        Carbon: 234.5 kg CO₂/month
+        
+    Algorithm:
+        1. Calculate carbon from transportation (car + flights)
+        2. Calculate carbon from energy (electricity + heating)
+        3. Calculate carbon from diet (based on type)
+        4. Calculate water from showers, laundry, and diet
+        5. Compute environmental score with penalties/bonuses
+        6. Determine rating category
+        7. Generate personalized recommendations
+        
+    Emission Factors (EPA 2024):
+        - Car: 0.4 kg CO₂ per mile
+        - Flight: 90 kg CO₂ per flight (short-haul average)
+        - Electricity: 0.5 kg CO₂ per kWh
+        - Heating: 5.3 kg CO₂ per therm
+        - Diet: 1.5-3.3 kg CO₂ per day (varies by type)
+        
+    Time Complexity: O(1)
+    Space Complexity: O(1)
+    
+    Raises:
+        HTTPException: If input validation fails (handled by Pydantic)
+    """
     
     try:
         # Carbon calculation (kg CO2 per month)

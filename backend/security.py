@@ -1,6 +1,26 @@
 """
-Advanced Security Module for EcoPulse
-Implements comprehensive security measures
+Advanced Security Module for EcoPulse API
+
+This module provides comprehensive security features including:
+- Input validation and sanitization (XSS, SQL injection prevention)
+- Password hashing and strength validation (PBKDF2-HMAC-SHA256)
+- Secure token generation and management
+- Rate limiting with sliding window algorithm
+- CSRF protection
+- Content Security Policy (CSP) header generation
+- Security audit logging
+- HTML/SQL input filtering
+
+All security implementations follow OWASP Top 10 best practices
+and use cryptographically secure random number generation.
+
+Example:
+    >>> from security import security_validator, password_security
+    >>> clean_input = security_validator.sanitize_string(user_input)
+    >>> is_valid, msg = password_security.validate_password_strength(password)
+    
+Author: EcoPulse Security Team
+Version: 1.0.0
 """
 
 import hashlib
@@ -12,11 +32,50 @@ import hmac
 
 
 class SecurityValidator:
-    """Input validation and sanitization"""
+    """
+    Input validation and sanitization for user-provided data
+    
+    Provides methods to sanitize strings, validate emails, check numeric ranges,
+    and validate carbon calculation inputs. Prevents XSS and injection attacks.
+    
+    All methods are static for easy use without instantiation.
+    
+    Example:
+        >>> validator = SecurityValidator()
+        >>> clean = validator.sanitize_string("<script>alert('xss')</script>Hello")
+        >>> print(clean)
+        'Hello'
+    """
     
     @staticmethod
     def sanitize_string(input_str: str) -> str:
-        """Remove potentially dangerous characters"""
+        """
+        Remove potentially dangerous characters and patterns from strings
+        
+        Removes script tags, event handlers, and other XSS vectors.
+        Protects against: XSS, HTML injection, JavaScript injection.
+        
+        Args:
+            input_str (str): User-provided input string to sanitize
+            
+        Returns:
+            str: Sanitized string with dangerous patterns removed
+            
+        Example:
+            >>> SecurityValidator.sanitize_string("<script>alert('xss')</script>")
+            ''
+            >>> SecurityValidator.sanitize_string("Hello <b>World</b>")
+            'Hello World'
+            
+        Patterns Removed:
+            - <script> tags
+            - javascript: protocol
+            - Event handlers (onclick, onload, etc.)
+            - <iframe>, <object>, <embed> tags
+            
+        Time Complexity: O(n*m) where n=string length, m=patterns
+        Space Complexity: O(n)
+        """
         if not isinstance(input_str, str):
             return ""
         
